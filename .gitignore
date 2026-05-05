@@ -1,3 +1,6 @@
+# Secrets
+.env
+
 # R
 .Rhistory
 .Rdata
