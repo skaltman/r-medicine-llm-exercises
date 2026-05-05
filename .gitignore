@@ -1,0 +1,24 @@
+# Secrets
+.env
+
+# R
+.Rhistory
+.Rdata
+.RData
+.httr-oauth
+.DS_Store
+
+# renv
+renv/library/
+renv/staging/
+renv/cellar/
+renv/lock/
+renv/python/
+renv/sandbox/
+
+# Byte-compiled
+*.pyc
+
+# IDE
+.Rproj.user
+.vscode/
