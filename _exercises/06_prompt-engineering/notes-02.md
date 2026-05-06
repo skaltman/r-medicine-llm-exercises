@@ -1,0 +1,3 @@
+so structured output is basically when you want the model to give you back data in a specific shape instead of just free text. like if you have clinical notes and you want to pull out patient name, age, diagnoses, medications etc. you define a schema using type_object and type_string and type_array and all those helpers, then you call chat_structured instead of chat and it forces the model to conform to your schema. then you can then run it over a bunch of inputs with parallel_chat_structured and get back a nice dataframe.
+
+may 5, 2026
