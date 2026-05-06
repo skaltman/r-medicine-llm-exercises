@@ -26,10 +26,4 @@ chat2$chat("Clean up these notes:\n", notes[[1]])
 
 # Step 3: Run all notes through with your system prompt.
 # Do they all come out in the same format?
-walk(notes, \(note) {
-  chat3 <- chat(
-    "anthropic/claude-haiku-4-5",
-    system_prompt = prompt
-  )
-  chat3$chat("Clean up these notes:\n", note)
-})
+walk(notes, \(note) chat2$chat("Clean up these notes:\n", note))
