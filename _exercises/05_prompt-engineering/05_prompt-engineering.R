@@ -3,9 +3,9 @@ library(readr)
 library(purrr)
 
 dir_notes <-
-  "~/r-medicine-llm-exercises/_exercises/06_prompt-engineering"
+  "~/r-medicine-llm-exercises/_exercises/05_prompt-engineering"
 file_prompt <-
-  "~/r-medicine-llm-exercises/_exercises/06_prompt-engineering/prompt.md"
+  "~/r-medicine-llm-exercises/_exercises/05_prompt-engineering/prompt.md"
 
 notes_files <- list.files(dir_notes, pattern = "^notes-", full.names = TRUE)
 notes <- map(notes_files, read_file)
@@ -26,10 +26,4 @@ chat2$chat("Clean up these notes:\n", notes[[1]])
 
 # Step 3: Run all notes through with your system prompt.
 # Do they all come out in the same format?
-walk(notes, \(note) {
-  chat3 <- chat(
-    "anthropic/claude-haiku-4-5",
-    system_prompt = prompt
-  )
-  chat3$chat("Clean up these notes:\n", note)
-})
+walk(notes, \(note) chat2$chat("Clean up these notes:\n", note))
