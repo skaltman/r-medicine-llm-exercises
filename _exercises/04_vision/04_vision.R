@@ -1,22 +1,29 @@
 library(ellmer)
 
-recipe_images <- here::here("data/recipes/images")
-img_pancakes <- file.path(recipe_images, "EasyBasicPancakes.jpg")
-img_pad_thai <- file.path(recipe_images, "PadThai.jpg")
+# There are several data visualization plots in this folder.
+# Your job: ask the LLM to interpret them.
 
-#' Ask OpenAI's `gpt-4.1-nano` to give a creative recipe title and description
-#' for the pancakes image.
-#' First, create the 
-chat <- chat_openai(model = "gpt-4.1-nano")
+# Step 1: Pick a plot and ask the model to describe what it shows.
+chat <- chat("anthropic/claude-haiku-4-5")
 chat$chat(
-  "____",
-  ____(img_pancakes)
+  "Describe what this plot shows.",
+  content_image_file(
+    here::here("_exercises/04_vision/health-expenditure-preventive.png")
+  )
 )
 
-#' In a new chat, ask it to write a recipe for the food it sees in the Pad Thai
-#' image. (Don't tell it that it's Pad Thai!)
-chat <- chat_openai(model = "gpt-4.1-nano")
-chat$chat(
-  "Write a recipe to make the food in this image.",
-  ____(img_pad_thai)
+# Step 2: Try a different plot. Ask a more specific question about it.
+chat2 <- chat("anthropic/claude-haiku-4-5")
+chat2$chat(
+  "What trends do you notice in this visualization?",
+  content_image_file(
+    here::here("_exercises/04_vision/health-expenditure-curative-comparison.png")
+  )
 )
+
+# Step 3: Try other plots in this folder and experiment with different prompts!
+# Available plots:
+#   - health-expenditure-preventive.png
+#   - health-expenditure-japan.png
+#   - health-expenditure-curative-comparison.png
+#   - georgia-mortality-by-site.png

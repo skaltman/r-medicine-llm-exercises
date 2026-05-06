@@ -1,60 +1,60 @@
 library(ellmer)
 
-# Read in the recipes from text files
-recipe_txt <- here::here("data/recipes/text")
-txt_waffles <- recipe_txt |>
-  file.path("CinnamonPeachOatWaffles.md") |>
-  brio::read_file() # Like readLines() but all in one string
+source(here::here("data/clinical-notes.R"))
 
-# Show the first 500 characters of the first recipe
-txt_waffles |> substring(1, 500) |> cat()
+# Look at the first note
+clinical_notes[[1]]
 
-#' Here's an example of the structured output we want to achieve for a single
-#' recipe:
+#' Extract structured data from each clinical note.
+#'
+#' Here's an example of what the structured output should look like:
 #'
 #' {
-#'   "title": "Spicy Mango Salsa Chicken",
-#'   "description": "A flavorful and vibrant chicken dish...",
-#'   "ingredients": [
+#'   "name": "Maria Chen",
+#'   "age": 58,
+#'   "sex": "Female",
+#'   "diagnoses": ["Type 2 diabetes mellitus", "Hypertension"],
+#'   "medications": [
 #'     {
-#'       "name": "Chicken Breast",
-#'       "quantity": "4",
-#'       "unit": "medium",
-#'       "notes": "Boneless, skinless"
+#'       "name": "Metformin",
+#'       "dose": "500mg",
+#'       "frequency": "twice daily"
 #'     },
 #'     {
-#'       "name": "Lime Juice",
-#'       "quantity": "2",
-#'       "unit": "tablespoons",
-#'       "notes": "Fresh"
+#'       "name": "Lisinopril",
+#'       "dose": "10mg",
+#'       "frequency": "once daily"
 #'     }
-#'   ],
-#'   "instructions": [
-#'     "Preheat grill to medium-high heat.",
-#'     "In a bowl, combine ...",
-#'     "Season chicken breasts with salt and pepper.",
-#'     "Grill chicken breasts for 6-8 minutes per side, or until cooked through.",
-#'     "Serve chicken topped with the spicy mango salsa."
 #'   ]
 #' }
 #'
 #' Hint: You can use `required = FALSE` in `type_*()` functions to indicate that
 #' a field is optional.
 
-type_recipe <- type_____(
-  title = ____(),
-  description = ____(),
-  ingredients = type_array(
+type_patient <- type_____(
+  name = ____(),
+  age = ____(),
+  sex = ____(),
+  diagnoses = type_array(____()),
+  medications = type_array(
     type_object(
       name = ____(),
-      quantity = ____(),
-      unit = ____(),
-      notes = ____()
+      dose = ____(),
+      frequency = ____()
     )
-  ),
-  instructions = type_array(____())
+  )
 )
 
-chat <- chat("openai/gpt-4.1-nano")
+chat <- chat("anthropic/claude-haiku-4-5")
 
-chat$chat_structured(txt_waffles, type = type_recipe)
+# Test with one or two notes
+chat$chat_structured(clinical_notes[[1]], type = type_patient)
+
+# Then use parallel_chat_structured() to run all notes
+# Look at documentation (?parallel_chat_structured) to see how it works
+notes_df <-
+  parallel_chat_structured(
+    chat("anthropic/claude-haiku-4-5"),
+    prompts = ____,
+    type = ____
+  )
