@@ -1,12 +1,12 @@
 library(tidyverse)
 
 health_exp <- read_csv(
-  here::here("data/health-expenditure.csv"),
+  "~/r-medicine-llm-exercises/data/health-expenditure.csv",
   show_col_types = FALSE
 )
 
 mortality <- read_csv(
-  here::here("data/georgia_mortality.csv"),
+  "~/r-medicine-llm-exercises/data/georgia_mortality.csv",
   show_col_types = FALSE
 )
 
