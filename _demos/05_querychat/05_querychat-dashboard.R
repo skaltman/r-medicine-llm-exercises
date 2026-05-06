@@ -16,7 +16,7 @@ ggplot2::update_geom_defaults("boxplot", list(colour = "#007BC2"))
 
 # Load and prepare data
 airbnb_data <-
-  read.csv(here::here("data/airbnb-asheville.csv")) |>
+  read.csv("~/r-medicine-llm-exercises/data/airbnb-asheville.csv") |>
   filter(!is.na(price)) |>
   mutate(occupancy_pct = (365 - availability_365) / 365)
 

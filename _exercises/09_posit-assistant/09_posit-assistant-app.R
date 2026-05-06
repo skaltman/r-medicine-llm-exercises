@@ -4,7 +4,7 @@ library(querychat)
 library(DT)
 
 health_exp <- readr::read_csv(
-  here::here("data/health-expenditure.csv"),
+  "~/r-medicine-llm-exercises/data/health-expenditure.csv",
   show_col_types = FALSE
 )
 

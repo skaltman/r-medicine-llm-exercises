@@ -57,7 +57,7 @@ listings <-
   )
 
 
-path_zip_codes_recode <- here::here("data/_asheville-zip-codes.csv")
+path_zip_codes_recode <- "~/r-medicine-llm-exercises/data/_asheville-zip-codes.csv"
 
 if (file.exists(path_zip_codes_recode)) {
   zip_codes_recode <- readr::read_csv(
@@ -94,6 +94,6 @@ listings <- listings |>
 
 readr::write_csv(
   listings,
-  here::here("data/airbnb-asheville.csv"),
+  "~/r-medicine-llm-exercises/data/airbnb-asheville.csv",
   na = ""
 )

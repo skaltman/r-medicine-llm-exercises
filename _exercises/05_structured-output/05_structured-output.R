@@ -1,6 +1,6 @@
 library(ellmer)
 
-source(here::here("data/clinical-notes.R"))
+source("~/r-medicine-llm-exercises/data/clinical-notes.R")
 
 # Look at the first note
 clinical_notes[[1]]
