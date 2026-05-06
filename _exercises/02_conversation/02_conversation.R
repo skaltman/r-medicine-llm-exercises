@@ -1,6 +1,5 @@
 library(ellmer)
 
-
 # 1. Fill in the blanks below to create a `chat` a system prompt
 # instructing the model to answer briefly.
 chat <- chat(
@@ -11,7 +10,7 @@ chat <- chat(
 # 2. Fill in the blank to ask the the first question:
 ____("What ellmer function tells me what Anthropic models are available?")
 
-# 3. Fill in the blank to ask the the second question:
+# 3. Fill in the blank to ask the the second question, using the same chat object:
 _____("What about OpenAI models?")
 
 # 4. Create a new chat with no system prompt and ask the second question again.

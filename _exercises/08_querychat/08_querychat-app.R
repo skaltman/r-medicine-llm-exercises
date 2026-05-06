@@ -6,8 +6,7 @@
 library(querychat)
 
 health_exp <- readr::read_csv(
-  "~/r-medicine-llm-exercises/data/health-expenditure.csv",
-  show_col_types = FALSE
+  "~/r-medicine-llm-exercises/data/health-expenditure.csv"
 )
 
 # Launch querychat with the health expenditure data

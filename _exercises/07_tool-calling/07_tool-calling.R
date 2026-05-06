@@ -10,13 +10,13 @@ health_exp <- readr::read_csv(
 # summary of health expenditure data for that country and year. It should:
 # - Filter the data for the given country and year
 # - Return spending by purpose (both % of CHE and USD)
-get_country_spending <- function(country, year) {
+get_country_spending <- function(country, year_) {
   health_exp |>
-    filter(____) |>
+    filter(country_name == country, year == year_) |>
     ____
 }
 
-# Step 2: Define a tool using tool() that wraps your function.
+# Step 2: Define a tool using tool() that uses your function.
 # Give it a description and specify the arguments.
 # Look at the tool() documentation if you need help.
 country_spending_tool <- tool(
